@@ -53,9 +53,9 @@ const websiteData = {
 
     characters: [
         {
-            name: "艾莉亞 (Aria)",
-            image: "https://images.unsplash.com/photo-1616776004907-77074744d2d6?q=80&w=1887&auto=format&fit=crop",
-            desc: "星際領航員。性格堅毅，能在混亂的隕石群中找到唯一的航道。隨身攜帶父親留下的舊懷錶。"
+            name: "諾拉 Nora",
+            image: "https://github.com/ciao-is-charlie/charlie/blob/4ebe6b94be9148af2dbb20a191cd670593a09d54/pic/char-nora.png?raw=true",
+            desc: "埃蕾奧諾拉．德．阿奎拉<br>黑手黨女王。<br>把你寵爛的大姊姊。"
         },
         {
             name: "雷恩 (Ryan)",
