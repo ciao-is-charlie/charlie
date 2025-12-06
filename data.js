@@ -54,7 +54,7 @@ const websiteData = {
     characters: [
         {
             name: "諾拉 Nora",
-            image: "https://github.com/ciao-is-charlie/charlie/blob/4ebe6b94be9148af2dbb20a191cd670593a09d54/pic/char-nora.png?raw=true",
+            image: "./pic/char-nora.png",
             desc: "埃蕾奧諾拉．德．阿奎拉<br>黑手黨女王。<br>把你寵爛的大姊姊。"
         },
         {
@@ -88,4 +88,5 @@ const websiteData = {
             desc: "賞金獵人。從不摘下面具，沒人知道他的過去。"
         }
     ]
+
 };
