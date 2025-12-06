@@ -54,23 +54,23 @@ const websiteData = {
     characters: [
         {
             name: "諾拉 Nora",
-            image: "./pic/char-nora.png",
+            image: "https://github.com/ciao-is-charlie/charlie/blob/4ebe6b94be9148af2dbb20a191cd670593a09d54/pic/char-nora.png?raw=true",
             desc: "埃蕾奧諾拉．德．阿奎拉<br>黑手黨女王。<br>把你寵爛的大姊姊。"
         },
         {
-            name: "雷恩 (Ryan)",
-            image: "https://images.unsplash.com/photo-1528659528242-2b6348c41d1a?q=80&w=1887&auto=format&fit=crop",
-            desc: "被放逐的機械師。右臂是生鏽的機械義肢，雖然看起來冷漠，卻總是默默修好同伴的裝備。"
+            name: "老虎大人",
+            image: "./pic/char-tiger.png",
+            desc: "待更新。"
         },
         {
-            name: "觀察者 (The Other)",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
-            desc: "身分不明的觀察者。總是出現在事件發生的角落，手中的筆記本記錄著不為人知的歷史。"
+            name: "弗拉德米爾",
+            image: ".pic/char-vlad.png",
+            desc: "待更新。"
         },
         {
-            name: "諾瓦 (Nova)",
-            image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1887&auto=format&fit=crop",
-            desc: "心靈感應者。在實驗室長大，第一次看見真正的星空時流下了眼淚。"
+            name: "入鹿山 邦久",
+            image: "./pic/char-kuni.jpg",
+            desc: "待更新。"
         },
         {
             name: "測試角色 5",
@@ -88,5 +88,4 @@ const websiteData = {
             desc: "賞金獵人。從不摘下面具，沒人知道他的過去。"
         }
     ]
-
 };
