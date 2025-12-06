@@ -1,0 +1,299 @@
+/* --- 變數與基礎設定 --- */
+:root {
+    --bg-color: #1a1a2e;
+    --theme-color: #e0e0e0; 
+    
+    /* 這些是預設值，會被 data.js 覆蓋 */
+    --offset-opacity: 0.3; /* 後框透明度 */
+    
+    --title-font: sans-serif;
+    --title-size: 1.8rem;
+    
+    --about-font: sans-serif;
+    --about-size: 1rem;
+    
+    --char-font: sans-serif;
+    --char-size: 0.9rem;
+
+    --about-box-title-font: sans-serif;
+    --about-box-title-size: 1.5rem;
+    
+    --char-name-font: sans-serif;
+    --char-name-size: 1.4rem;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--theme-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* --- 星星特效 --- */
+.star {
+    position: fixed;
+    top: -10px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* --- 容器 --- */
+.container {
+    max-width: 1275px; 
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- 橫幅 --- */
+.banner {
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+    margin-bottom: 45px; 
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-color) 100%);
+    pointer-events: none;
+}
+
+/* =========================================
+   核心設計：錯位方框
+   ========================================= */
+.double-border-box {
+    position: relative;
+    background: rgba(20, 20, 40, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--theme-color); 
+    display: flex;
+    overflow: visible; 
+    margin-bottom: 30px; 
+    transition: transform 0.3s ease;
+}
+
+/* 後方錯位框線 */
+.double-border-box::before {
+    content: '';
+    position: absolute;
+    z-index: -1; 
+    width: 100%;
+    height: 100%;
+    top: -9px; 
+    left: 9px;
+    border: 1px solid var(--theme-color);
+    
+    /* 【關鍵修正】這裡改用變數控制透明度 */
+    opacity: var(--offset-opacity); 
+    
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.double-border-box:hover {
+    transform: translateY(-4px); 
+    background: rgba(40, 40, 60, 0.8);
+}
+
+.double-border-box:hover::before {
+    top: -12px;
+    left: 12px;
+}
+
+/* =========================================
+   關於我區域
+   ========================================= */
+.intro-container-narrow {
+    max-width: 520px; 
+    margin: 0 auto 60px auto; 
+}
+
+.intro-content-wrapper {
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch; 
+    width: 100%;
+    min-height: 240px; 
+}
+
+.intro-img {
+    width: 40%; 
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-right: none; 
+    border-bottom: none; 
+}
+
+.intro-text {
+    padding: 15px; 
+    width: 60%;
+    box-sizing: border-box; 
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    
+    /* 【關鍵修正】套用關於我專用變數 */
+    font-family: var(--about-font);
+    font-size: var(--about-size);
+}
+
+/* --- 標題區域 --- */
+.intro-text .section-title {
+    /* 這裡改成讀取我們剛剛在 data.js 設定的變數 */
+    font-family: var(--about-box-title-font);
+    font-size: var(--about-box-title-size);
+    
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 4px;
+}
+
+.section-title-area {
+    text-align: center;
+    margin-bottom: 40px; 
+    margin-top: 15px;
+}
+
+.section-title-area h2 {
+    /* 【關鍵修正】套用大標題專用變數 */
+    font-family: var(--title-font);
+    font-size: var(--title-size);
+    
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: var(--theme-color);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--theme-color), 0 0 40px var(--theme-color);
+    text-transform: uppercase;
+}
+
+/* =========================================
+   角色網格
+   ========================================= */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 38px; 
+}
+
+.character-card {
+    flex-direction: row; 
+    align-items: stretch;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    overflow: visible; 
+}
+
+.char-img {
+    width: 40%; 
+    height: 100%; 
+    object-fit: cover;
+    border: none !important; 
+    display: block;
+}
+
+.char-info {
+    padding: 18px; 
+    width: 60%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; 
+    
+    /* 【關鍵修正】套用角色專用變數 */
+    font-family: var(--char-font);
+    font-size: var(--char-size);
+}
+
+/* --- 反轉樣式 --- */
+.character-card.reversed {
+    flex-direction: row-reverse;
+}
+
+.character-card.reversed .char-info {
+    text-align: right; 
+}
+
+.character-card.reversed .char-name {
+    margin-left: auto; 
+}
+
+/* =========================================
+   RWD 手機版調整 (修正重點區)
+   ========================================= */
+@media (max-width: 1024px) {
+    .character-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px; 
+        margin: 0 auto;
+    }
+    
+    /* 角色卡片在手機版維持高度彈性 */
+    .character-card {
+        aspect-ratio: auto;
+        min-height: 200px;
+    }
+
+    /* 【修改說明】
+       我移除了原本這裡針對 intro-content-wrapper (關於我) 的強制直式設定。
+       現在它會直接繼承電腦版的設定：圖左文右 (row)。
+    */
+
+    .intro-container-narrow {
+        max-width: 100%; /* 讓容器在手機上寬度全開 */
+    }
+}
+
+.char-name {
+    margin: 0 0 10px 0;
+    
+    /* 【修改】原本是 font-size: 1.2em; 改成讀取變數 */
+    font-family: var(--char-name-font);
+    font-size: var(--char-name-size);
+    
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.char-desc {
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.6;
+}
